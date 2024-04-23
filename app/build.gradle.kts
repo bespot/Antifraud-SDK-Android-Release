@@ -14,8 +14,8 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        resValue("string", "antifraud_sdk_key", extFormatted("SDK_PROD_API_KEY"))
-        resValue("string", "antifraud_sdk_api_url", extFormatted("SDK_PROD_API_URL"))
+        resValue("string", "antifraud_sdk_key", "SDK_PROD_API_KEY".ext())
+        resValue("string", "antifraud_sdk_api_url", "SDK_PROD_API_URL".ext())
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -74,8 +74,4 @@ dependencies {
 
 fun String.ext(): String {
     return extra[this] as String
-}
-
-fun extFormatted(extraKey: String): String {
-    return "\"${extraKey.ext()}\""
 }

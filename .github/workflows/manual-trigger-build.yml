@@ -1,0 +1,33 @@
+name: Manual Trigger Sample App Build
+on:
+  workflow_dispatch:
+env:
+  ARTIFACT_NAME: antifraud-sample-${{ github.sha }}
+  ORG_GRADLE_PROJECT_SDK_PROD_API_KEY: ${{ secrets.SDK_PROD_API_KEY }}
+  ORG_GRADLE_PROJECT_SDK_PROD_API_URL: ${{ secrets.SDK_PROD_API_URL }}
+jobs:
+  build:
+    name: Building Sample App ⚙
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Java Version
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin' # See 'Supported distributions' for available options
+          java-version: '17'
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Build Sample App
+        run: |
+          echo "Building Staging Debug version"
+          ./gradlew :app:assembleDebug
+          cp app/build/outputs/apk/debug/*.apk antifraud-sample.apk
+      - name: Archive the build(s) 💾
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.ARTIFACT_NAME }}
+          path: |
+            antifraud-sample.apk
+          retention-days: 15

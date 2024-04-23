@@ -50,3 +50,5 @@ Zapp/src/main/java/com/bespot/antifraud/sdk/release/ui/composables/main/Permissi
 Vapp/src/main/java/com/bespot/antifraud/sdk/release/ui/composables/main/ActionColumn.kt,0/c/0cb60c6b67a8530caf1ab89d68d5ee2c1b5dbb93
 Ž
 ^app/src/main/java/com/bespot/antifraud/sdk/release/ui/composables/common/AntifraudTopAppBar.kt,9/6/96f6c52acb27325c6292a7c68e97613dbeb001b6
+Z
+*.github/workflows/manual-trigger-build.yml,a/2/a2dcf946b11a93c62c3d8254df2798727e1b7f35
