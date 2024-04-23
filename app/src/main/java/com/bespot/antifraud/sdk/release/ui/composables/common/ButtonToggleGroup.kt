@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -14,15 +13,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import com.bespot.antifraud.sdk.release.ui.theme.Dimens
-import com.bespot.antifraud.sdk.release.ui.theme.primaryColor
-import com.bespot.antifraud.sdk.release.ui.theme.primaryColorDark
+import com.bespot.antifraud.sdk.release.ui.theme.Theme
 
 @Composable
-fun ButtonToggleGroup(options: List<String>, onClick: (Int) -> Unit) {
+fun ButtonToggleGroup(options: List<String>, selectedIndex: Int?, onClick: (Int) -> Unit) {
     var selectedOption by remember {
-        mutableStateOf("")
+        mutableStateOf(selectedIndex?.let {"UserId $it"} ?: "")
     }
     val onSelectionChange = { text: String ->
         if (text == selectedOption) {
@@ -45,24 +42,11 @@ fun ButtonToggleGroup(options: List<String>, onClick: (Int) -> Unit) {
                         onClick(index + 1)
                     },
                     modifier = Modifier.padding(horizontal = Dimens.Padding.smallPadding),
-                    colors = ButtonColors(
-                        containerColor = getContainerColor(selectedOption, text),
-                        contentColor = Color.White,
-                        disabledContainerColor = Color.Gray,
-                        disabledContentColor = Color.White
-                    )
+                    colors = Theme.toggleButtonColors(selectedOption, text)
                 ) {
                     Text(text = text)
                 }
             }
         }
-    }
-}
-
-private fun getContainerColor(selectedOption: String, text: String): Color {
-    return if (selectedOption == text) {
-        primaryColorDark
-    } else {
-        primaryColor
     }
 }

@@ -26,7 +26,7 @@ fun UserIdColumn(viewModel: MainActivityViewModel, preferences: SharedPreference
             fontSize = Dimens.TextSize.largeSize,
             maxLines = 1
         )
-        ButtonToggleGroup(options = options) { index ->
+        ButtonToggleGroup(options = options, selectedIndex = selectedIndex) { index ->
             selectedIndex = if (index == selectedIndex) {
                 null
             } else {
