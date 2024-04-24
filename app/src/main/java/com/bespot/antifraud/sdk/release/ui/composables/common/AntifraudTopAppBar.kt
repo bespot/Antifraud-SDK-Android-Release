@@ -42,7 +42,11 @@ fun TicketProvider(context: Context, viewModel: MainActivityViewModel) {
         contentDescription = "Antifraud Ticket Id",
         modifier = Modifier.clickable {
             clipboard.setText(AnnotatedString(checkResult.ticket))
-            Toast.makeText(context, "Ticket copied to clipboard", Toast.LENGTH_SHORT).show()
+            if (checkResult.ticket.isEmpty()) {
+                Toast.makeText(context, "Run a check first!", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(context, "Ticket copied to clipboard", Toast.LENGTH_SHORT).show()
+            }
         }
     )
 }

@@ -9,13 +9,14 @@ import androidx.core.app.ActivityCompat
 import com.bespot.antifraud.sdk.Action
 import kotlin.random.Random
 
-fun Action.toTitle(): String {
+fun Action?.toTitle(): String {
     return when (this) {
         Action.SAFE -> "✅ Device is safe"
         Action.MONITOR -> "Device should be monitored"
         Action.LIMIT_ACCESS -> "⚠️ Device should have limited access"
         Action.BLOCK -> "⛔ Device should be blocked"
         Action.NOT_SAFE -> "📵 Device is not safe"
+        null -> "Select a fraud detection method"
     }
 }
 
