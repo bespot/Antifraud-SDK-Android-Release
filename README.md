@@ -3,9 +3,9 @@
 [![VERSION](https://img.shields.io/badge/VERSION-0.4.8-green)](#)
 [![API](https://img.shields.io/badge/API-24%2B-brightgreen.svg?style=flat)](#)
 
-Antifraud SDK is an easy to use Android library for keeping your app safe from fraudulent activities.
-The SDK needs minimal permissions to work and uses device information and sensors in order to detect and report potential threats,
-so the app developers can determine the next best move for their apps!
+Antifraud SDK is an easy to use Android library for protecting your application from fraudulent activities.
+Our SDK requires minimal permissions and uses device information and sensors to detect and report potential threats,
+so that app developers can make informed decisions about their application's actions.
 
 ## Features
 |   Detection     	   | Supported  	 |          Description                    	           |
@@ -18,8 +18,8 @@ so the app developers can determine the next best move for their apps!
 
 <img src="screenshots/sample_start.png" width="300" align="right" hspace="20">
 
-Add the following lines inside the `dependencyResolutionManagement` bracket of `settings.gradle.kts` 
-(or inside the `repositories` bracket inside the root `build.gradle.kts` file if you still use the old way)
+Add the following lines inside the `dependencyResolutionManagement` block of your `settings.gradle.kts` 
+(or inside the `repositories` block of the root `build.gradle.kts` file if you still use the old way)
 
 ```kotlin
 dependencyResolutionManagement {
@@ -29,34 +29,34 @@ dependencyResolutionManagement {
 }
 ```
 _The `bespot-logger` dependency is needed in order to have available logs for our mobile developers to make debugging easier,
-and the `jitpack` dependency is needed for  some dependencies our SDK has. We will try to remove them at a later date_
+and the `jitpack` dependency is needed for some dependencies our SDK has. We will try to remove them at a later date_
 
-Next add the following dependency inside your app's `build.gradle.kts` file
+Next, add the following dependency inside your app's `build.gradle.kts` file
 ```kotlin
 dependencies {
     implementation("com.bespot.antifraud:sdk-android:$latest_version")
 }
 ```
 
-Finally it is required to pass the `API_KEY` and `API_URL` as `resValues` inside your app's `build.gradle.kts` file. Like the following example
+Finally, you need to pass the `API_KEY` and `API_URL` as `resValues` inside your app's `build.gradle.kts` file:
 ```kotlin
 resValue("string", "antifraud_sdk_key", YOUR_API_KEY)
 resValue("string", "antifraud_sdk_api_url", YOUR_API_URL)
 ```
-Or via your app's `strings.xml` file
+or via your app's `strings.xml` file
 ```xml
 <string name="antifraud_sdk_key">YOUR_API_KEY</string>
-<string name="antifraud_sdk_api_url", YOUR_API_URL</string>
+<string name="antifraud_sdk_api_url"> YOUR_API_URL</string>
 ```
 ## Usage
 
 <img src="screenshots/sample_subscribe.png" width="300" align="right" hspace="20">
 
-Our SDK has the following available methods
+Our SDK exposes the following methods:
 
 ### Check
-This method checks a single time for fraudulent activities. It is recommended to be used when the user does a simple thing, ex. clicks a button in your app.
-The `check` method uses a `FraudulentCheckObserver` callback which you can use for handling the Actions returned from our service or possible Failures
+This method performs a single check for fraudulent activities. It should be used when the application need to verify a specific user action, ex. the user clicks a button in your app.
+The `check` method uses a `FraudulentCheckObserver` callback which can be used for handling the Actions returned from our service or possible Failures.
 ```kotlin
 safeSdk.check(object : FraudulentCheckObserver {
     override fun onSuccess(action: Action, signature: String) {
@@ -71,9 +71,8 @@ safeSdk.check(object : FraudulentCheckObserver {
 ```
 
 ### Subscribe
-This method initializes a subscription which will return a check to your app every ~5 seconds. It is recommended to use it for a 
-specific flow in your app, and not when a user does a simple thing like selecting a button.
-The `subscribe` method uses a `FraudulentSessionObserver` callback which you can use for handling the Actions returned from our service or possible Failures
+This method initializes a subscription to the periodic check process which runs in your app every ~5 seconds. You should only really use it if you wish to monitor how the user's device detected fraudulent state changes over time, and not for a user action.
+The `subscribe` method uses a `FraudulentSessionObserver` callback which you can use for handling the Actions returned from our service or possible Failures.
 ```kotlin
 safeSdk.subscribe(object : FraudulentSessionObserver {
     override fun perform(action: Action, signature: String) {
@@ -93,13 +92,13 @@ This method cancels the subscription mentioned above.
 safeSdk.unsubscribe()
 ```
 ### SetUserId
-This method set a `String` object as the UserId. It is recommended to pass something unique as the UserId
+This method sets a `String` object as the UserId. It is recommended to pass something unique as the UserId
 ```kotlin
 safeSdk.setUserId(id: String)
 ```
 
 ### Logging
-This method enables the logs for our service. It is recommended to be enabled only in debug builds.
+This method enables the logs for our service. This should be enabled only in debug builds.
 ```kotlin
 safeSdk.logging(enable: Boolean)
 ```
@@ -108,7 +107,7 @@ safeSdk.logging(enable: Boolean)
 _Because the Callbacks used in `check` and `subscribe` methods are similar we will merge them at a later date_
 
 ## Failures
-In the `check` and `subscribe` methods we mentioned some Failures. At this time these are the available Failures which we recommend you handle them.
+When an error occurs, the `check` and `subscribe` methods we return the following objects (which you should handle):
 ```kotlin
 when (error) {
     is Failure.NetworkConnection -> // Connection Error
