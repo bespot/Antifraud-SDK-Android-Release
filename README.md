@@ -52,6 +52,12 @@ or via your app's `strings.xml` file
 
 <img src="screenshots/sample_subscribe.png" width="300" align="right" hspace="20">
 
+The Antifraud SDK requires four permissions:
+- [Fine Location](https://developer.android.com/reference/android/Manifest.permission#ACCESS_FINE_LOCATION)
+- [Coarse Location](https://developer.android.com/reference/android/Manifest.permission#ACCESS_COARSE_LOCATION)
+- [External Storage](https://developer.android.com/reference/android/Manifest.permission#WRITE_EXTERNAL_STORAGE) 
+- [Audio Media](https://developer.android.com/reference/android/Manifest.permission#READ_MEDIA_AUDIO)
+
 Our SDK exposes the following methods:
 
 ### Check
