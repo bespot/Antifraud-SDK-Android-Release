@@ -131,3 +131,7 @@ We use [Github issues](https://github.com/bespot/Antifraud-SDK-Android-Release/i
 
 - If you find a bug please fill out an issue report. Provide as much information as possible.
 - If you think of a great idea please fill out an issue as a proposal for your idea.
+
+## License
+(C) Copyright 2020-2024 Bespot P.C. All rights reserved. See `LICENSE` for more information.
+[Bespot](https://bespot.com/) Location tracking to drive growth, profitability and customer engagement
