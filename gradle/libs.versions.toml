@@ -1,5 +1,5 @@
 [versions]
-antifraud-sdk-version = "0.4.8"
+antifraud-sdk-version = "1.0.0"
 
 agp = "8.3.2"
 kotlin = "1.9.23"
