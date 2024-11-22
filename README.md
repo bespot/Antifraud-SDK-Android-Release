@@ -41,10 +41,10 @@ dependencies {
 Finally, you need to pass the `API_KEY` and `API_URL` as `resValues` inside your app's `build.gradle.kts` file:
 ```kotlin
 resValue("string", "antifraud_sdk_key", YOUR_API_KEY)
-resValue("string", "antifraud_sdk_api_url", YOUR_API_URL)
+resValue("string", "antifraud_sdk_api_url", API_URL)
 resValue("string", "antifraud_sdk_client_id", YOUR_CLIENT_ID)
 resValue("string", "antifraud_sdk_client_secret", YOUR_CLIENT_SECRET)
-resValue("string", "antifraud_sdk_oauth2_token_url", YOUR_OAUTH2_TOKEN_URL)
+resValue("string", "antifraud_sdk_oauth2_token_url", OAUTH2_TOKEN_URL)
 ```
 or via your app's `strings.xml` file
 ```xml
