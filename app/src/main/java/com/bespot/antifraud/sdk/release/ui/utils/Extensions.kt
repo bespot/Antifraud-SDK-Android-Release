@@ -6,7 +6,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
-import com.bespot.antifraud.sdk.Action
+import com.bespot.shared.common.models.Action
 import kotlin.random.Random
 
 fun Action?.toTitle(): String {
