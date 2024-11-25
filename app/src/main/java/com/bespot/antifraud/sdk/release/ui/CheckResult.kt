@@ -1,7 +1,7 @@
 package com.bespot.antifraud.sdk.release.ui
 
-import com.bespot.antifraud.sdk.Action
-import com.bespot.antifraud.sdk.common.empty
+import com.bespot.shared.common.models.Action
+import com.bespot.shared.common.util.empty
 
 data class CheckResult(
     val action: Action?,
