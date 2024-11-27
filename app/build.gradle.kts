@@ -16,6 +16,9 @@ android {
 
         resValue("string", "antifraud_sdk_key", "SDK_PROD_API_KEY".ext())
         resValue("string", "antifraud_sdk_api_url", "SDK_PROD_API_URL".ext())
+        resValue("string", "antifraud_sdk_client_id", "PROD_OAUTH2_CLIENT_ID".ext())
+        resValue("string", "antifraud_sdk_client_secret", "PROD_OAUTH2_CLIENT_SECRET".ext())
+        resValue("string", "antifraud_sdk_oauth2_token_url", "PROD_OAUTH2_TOKEN_URL".ext())
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {

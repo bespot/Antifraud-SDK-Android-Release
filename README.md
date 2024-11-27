@@ -1,6 +1,6 @@
 # Antifraud SDK Android Release
 
-[![VERSION](https://img.shields.io/badge/VERSION-0.4.8-green)](#)
+[![VERSION](https://img.shields.io/badge/VERSION-1.0.0-green)](#)
 [![API](https://img.shields.io/badge/API-24%2B-brightgreen.svg?style=flat)](#)
 
 Antifraud SDK is an easy to use Android library for protecting your application from fraudulent activities.
@@ -38,15 +38,21 @@ dependencies {
 }
 ```
 
-Finally, you need to pass the `API_KEY` and `API_URL` as `resValues` inside your app's `build.gradle.kts` file:
+Finally, you need to pass the `API_KEY`, `API_URL`, `CLIENT_ID`, `CLIENT_SECRET` and `OAUTH2_TOKEN_URL` as `resValues` inside your app's `build.gradle.kts` file:
 ```kotlin
 resValue("string", "antifraud_sdk_key", YOUR_API_KEY)
-resValue("string", "antifraud_sdk_api_url", YOUR_API_URL)
+resValue("string", "antifraud_sdk_api_url", API_URL)
+resValue("string", "antifraud_sdk_client_id", YOUR_CLIENT_ID)
+resValue("string", "antifraud_sdk_client_secret", YOUR_CLIENT_SECRET)
+resValue("string", "antifraud_sdk_oauth2_token_url", OAUTH2_TOKEN_URL)
 ```
 or via your app's `strings.xml` file
 ```xml
 <string name="antifraud_sdk_key">YOUR_API_KEY</string>
-<string name="antifraud_sdk_api_url"> YOUR_API_URL</string>
+<string name="antifraud_sdk_api_url"> API_URL</string>
+<string name="antifraud_sdk_client_id">YOUR_CLIENT_ID</string>
+<string name="antifraud_sdk_client_secret"> YOUR_CLIENT_SECRET</string>
+<string name="antifraud_sdk_oauth2_token_url">OAUTH2_TOKEN_URL</string>
 ```
 ## Usage
 
