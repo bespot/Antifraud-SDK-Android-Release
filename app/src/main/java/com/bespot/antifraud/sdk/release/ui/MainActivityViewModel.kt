@@ -4,11 +4,10 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
-import com.bespot.antifraud.sdk.Action
-import com.bespot.antifraud.sdk.Failure
-import com.bespot.antifraud.sdk.FraudulentCheckObserver
-import com.bespot.antifraud.sdk.FraudulentSessionObserver
-import com.bespot.antifraud.sdk.SafeSdk
+import com.bespot.shared.common.models.Action
+import com.bespot.shared.core.Failure
+import com.bespot.shared.core.FraudulentCheckObserver
+import com.bespot.shared.core.SafeSdk
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -31,8 +30,8 @@ class MainActivityViewModel: ViewModel() {
 
     fun subscribe() {
         _isSubscribed.value = true
-        safeSdk.subscribe(object : FraudulentSessionObserver {
-            override fun perform(action: Action, signature: String) {
+        safeSdk.subscribe(object : FraudulentCheckObserver {
+            override fun onSuccess(action: Action, signature: String) {
                 _checkResult.value = CheckResult(action = action, ticket = signature)
                 _timestamp.value = getNow()
             }
