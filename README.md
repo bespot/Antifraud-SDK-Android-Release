@@ -1,20 +1,15 @@
-# Antifraud SDK Android Release
+# Bespot Gatekeeper Android SDK
 
 [![VERSION](https://img.shields.io/badge/VERSION-1.0.0-green)](#)
 [![API](https://img.shields.io/badge/API-24%2B-brightgreen.svg?style=flat)](#)
 
-Antifraud SDK is an easy to use Android library for protecting your application from fraudulent activities.
-Our SDK requires minimal permissions and uses device information and sensors to detect and report potential threats,
-so that app developers can make informed decisions about their application's actions.
+Bespot Gatekeeper is a highly customizable fraud prevention and geolocation verification platform for mobile and web applications. It verifies user locations, detects device integrity issues, and monitors network connections to help organizations—particularly in the iGaming, Media Streaming, and Financial Services industries—comply with regulations and protect digital transactions from fraud.
 
 ## Features
-|   Detection     	   | Supported  	 |          Description                    	           |
-|:-------------------:|:------------:|:---------------------------------------------------:|
-|    VPN        	     |   yes    	   |       Virtual Private Network              	        |
-|  Mock Location   	  |   yes    	   | Another app is manipulating the device's location 	 |
-| Multiple  Users  	  |   yes    	   |  More than one users are registered in the device	  |
 
-## Installation
+See our [documentation](https://gatekeeper.docs.bespot.com/overview/features/) for an up-to-date list of fraud detections available across platforms.
+
+## Install the library
 
 <img src="screenshots/sample_start.png" width="300" align="right" hspace="20">
 
@@ -103,7 +98,7 @@ This method cancels the subscription mentioned above.
 ```kotlin
 safeSdk.unsubscribe()
 ```
-### SetUserId
+### Identify user (SetUserId)
 This method sets a `String` object as the UserId. It is recommended to pass something unique as the UserId
 ```kotlin
 safeSdk.setUserId(id: String)
@@ -118,7 +113,7 @@ safeSdk.logging(enable: Boolean)
 
 _Because the Callbacks used in `check` and `subscribe` methods are similar we will merge them at a later date_
 
-## Failures
+## Errors
 When an error occurs, the `check` and `subscribe` methods we return the following objects (which you should handle):
 ```kotlin
 when (error) {
@@ -139,5 +134,4 @@ We use [Github issues](https://github.com/bespot/Antifraud-SDK-Android-Release/i
 - If you think of a great idea please fill out an issue as a proposal for your idea.
 
 ## License
-(C) Copyright 2020-2024 Bespot P.C. All rights reserved. See `LICENSE` for more information.
-[Bespot](https://bespot.com/) Location tracking to drive growth, profitability and customer engagement
+© 2025 [Bespot](https://bespot.com/) Private Company. All rights reserved. See `LICENSE` for more information.
