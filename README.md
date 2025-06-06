@@ -7,14 +7,13 @@ Bespot Gatekeeper is a highly customizable fraud prevention and geolocation veri
 
 ## Features
 
-See our [documentation](https://gatekeeper.docs.bespot.com/overview/features/) for an up-to-date list of fraud detections available across platforms.
+Refer to our [documentation](https://gatekeeper.docs.bespot.com/overview/features/) for the latest list of fraud detection capabilities available across platforms.
 
 ## Install the library
 
 <img src="screenshots/sample_start.png" width="300" align="right" hspace="20">
 
-Add the following lines inside the `dependencyResolutionManagement` block of your `settings.gradle.kts` 
-(or inside the `repositories` block of the root `build.gradle.kts` file if you still use the old way)
+Add the following lines to the `dependencyResolutionManagement` block in your `settings.gradle.kts` file, or to the `repositories` block in the root `build.gradle.kts` file if you're using the legacy structure.
 
 ```kotlin
 dependencyResolutionManagement {
@@ -23,17 +22,18 @@ dependencyResolutionManagement {
     maven(url = "https://jitpack.io" )
 }
 ```
-_The `bespot-logger` dependency is needed in order to have available logs for our mobile developers to make debugging easier,
-and the `jitpack` dependency is needed for some dependencies our SDK has. We will try to remove them at a later date_
 
-Next, add the following dependency inside your app's `build.gradle.kts` file
+_The `bespot-logger` dependency enables logging to assist our developers with debugging, while the `jitpack` dependency supports certain SDK components. We plan to remove these dependencies in a future update._
+
+Next, add the following dependency to your app’s `build.gradle.kts` file.
 ```kotlin
 dependencies {
     implementation("com.bespot.antifraud:sdk-android:$latest_version")
 }
 ```
 
-Finally, you need to pass the `API_KEY`, `API_URL`, `CLIENT_ID`, `CLIENT_SECRET` and `OAUTH2_TOKEN_URL` as `resValues` inside your app's `build.gradle.kts` file:
+Finally, include the following, `API_KEY`, `API_URL`, `CLIENT_ID`, `CLIENT_SECRET` and `OAUTH2_TOKEN_URL` as `resValues` entries in your app’s `build.gradle.kts` file:
+
 ```kotlin
 resValue("string", "antifraud_sdk_key", YOUR_API_KEY)
 resValue("string", "antifraud_sdk_api_url", API_URL)
@@ -53,13 +53,13 @@ or via your app's `strings.xml` file
 
 <img src="screenshots/sample_subscribe.png" width="300" align="right" hspace="20">
 
-The Antifraud SDK requires four permissions:
+Depending on your fraud prevention strategy, the Gatekeeper SDK requires the following permissions:
 - [Fine Location](https://developer.android.com/reference/android/Manifest.permission#ACCESS_FINE_LOCATION)
 - [Coarse Location](https://developer.android.com/reference/android/Manifest.permission#ACCESS_COARSE_LOCATION)
 - [External Storage](https://developer.android.com/reference/android/Manifest.permission#WRITE_EXTERNAL_STORAGE) 
 - [Audio Media](https://developer.android.com/reference/android/Manifest.permission#READ_MEDIA_AUDIO)
 
-Our SDK exposes the following methods:
+The Gatekeeper SDK provides the following methods for use in client applications:
 
 ### Check
 This method performs a single check for fraudulent activities. It should be used when the application need to verify a specific user action, ex. the user clicks a button in your app.
@@ -78,8 +78,9 @@ safeSdk.check(object : FraudulentCheckObserver {
 ```
 
 ### Subscribe
-This method initializes a subscription to the periodic check process which runs in your app every ~5 seconds. You should only really use it if you wish to monitor how the user's device detected fraudulent state changes over time, and not for a user action.
-The `subscribe` method uses a `FraudulentSessionObserver` callback which you can use for handling the Actions returned from our service or possible Failures.
+This method initializes a subscription to periodic detections, running at a configurable interval (as low as 1 second), which can be customized per application. It’s ideal for continuously monitoring changes in the device’s fraud detection state over time, rather than responding to specific user actions.
+The `subscribe` method relies on a `FraudulentSessionObserver` callback to handle both the Actions returned by our service and any potential Failures.
+
 ```kotlin
 safeSdk.subscribe(object : FraudulentSessionObserver {
     override fun perform(action: Action, signature: String) {
@@ -94,27 +95,26 @@ safeSdk.subscribe(object : FraudulentSessionObserver {
 ```
 
 ### Unsubscribe
-This method cancels the subscription mentioned above.
+This method ends the subscription at regular intervals.
 ```kotlin
 safeSdk.unsubscribe()
 ```
 ### Identify user (SetUserId)
-This method sets a `String` object as the UserId. It is recommended to pass something unique as the UserId
+This method sets a `String` value as the User ID. It’s recommended to use a unique identifier, such as an account ID, player ID, or loyalty number.
 ```kotlin
 safeSdk.setUserId(id: String)
 ```
 
 ### Logging
-This method enables the logs for our service. This should be enabled only in debug builds.
+This method enables logging for our service and should be used only in debug builds.
 ```kotlin
 safeSdk.logging(enable: Boolean)
 ```
 
-
-_Because the Callbacks used in `check` and `subscribe` methods are similar we will merge them at a later date_
+_Since the Callbacks used in the `check` and `subscribe` methods are similar, they will be unified in a future update._
 
 ## Errors
-When an error occurs, the `check` and `subscribe` methods we return the following objects (which you should handle):
+When an error occurs, the `check` and `subscribe` methods return the following objects, which should be properly handled:
 ```kotlin
 when (error) {
     is Failure.NetworkConnection -> // Connection Error
@@ -128,10 +128,12 @@ when (error) {
 ```
 
 ## Support
-We use [Github issues](https://github.com/bespot/Antifraud-SDK-Android-Release/issues) to track bugs and enhancements.
+We use [Github issues](https://github.com/bespot/Antifraud-SDK-Android-Release/issues) to track bugs and feature requests.
 
-- If you find a bug please fill out an issue report. Provide as much information as possible.
-- If you think of a great idea please fill out an issue as a proposal for your idea.
+- If you encounter a bug, please open an issue and include as much detail as possible.
+- If you have a feature suggestion or improvement idea, feel free to submit it as a proposal.
+
+
 
 ## License
 © 2025 [Bespot](https://bespot.com/) Private Company. All rights reserved. See `LICENSE` for more information.
