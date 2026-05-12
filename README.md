@@ -1,6 +1,6 @@
 # Bespot Gatekeeper Android SDK
 
-[![VERSION](https://img.shields.io/badge/VERSION-1.0.0-green)](#)
+[![VERSION](https://img.shields.io/badge/VERSION-1.0.1-green)](#)
 [![API](https://img.shields.io/badge/API-24%2B-brightgreen.svg?style=flat)](#)
 
 Bespot Gatekeeper is a highly customizable fraud prevention and geolocation verification platform for mobile and web applications. It verifies user locations, detects device integrity issues, and monitors network connections to help organizations—particularly in the iGaming, Media Streaming, and Financial Services industries—comply with regulations and protect digital transactions from fraud.
